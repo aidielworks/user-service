@@ -42,4 +42,23 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Relationship
+     */
+
+    public function genres()
+    {
+        return $this->belongsToMany(Genre::class, 'user_genres');
+    }
+
+    public function interests()
+    {
+        return $this->belongsToMany(Interest::class, 'user_interests');
+    }
+
+    public function musicHistories()
+    {
+        return $this->hasMany(MusicHistory::class);
+    }
 }
